@@ -13,21 +13,62 @@ public class HashTable {
         }
     }
 
-    private class Entrada {
-        private int key;
-        private String value;
+    private int hash(int key) {
+        return key % size;
+    }
 
-        public Entrada(int key, String value) {
-            this.key = key;
-            this.value = value;
+    private int hash(String key) {
+        int hash = 0;
+        for (int i = 0; i < key.length(); i++) {
+            hash = (31 * hash + key.charAt(i)) % size;
         }
+        return hash;
+    }
 
-        public int getKey() {
-            return key;
-        }
+    public void inserir(int key, String value) {
+        int index = hash(key);
+        table[index].add(new Entrada(key, value));
+    }
 
-        public String getValue() {
-            return value;
+    public String buscar(String value) {
+        int index = hash(value);
+        for (Entrada entrada : table[index]) {
+            if (entrada.getValue().equals(value)) {
+                return entrada.getValue();
+            }
         }
+        return null;
+    }
+
+    public String buscar(int key) {
+        int index = hash(key);
+        for (Entrada entrada : table[index]) {
+            if (entrada.getKey() == key) {
+                return entrada.getValue();
+            }
+        }
+        return null;
+    }
+
+    public String remover(int key) {
+        int index = hash(key);
+        for (Entrada entrada : table[index]) {
+            if (entrada.getKey() == key) {
+                table[index].remove(entrada);
+                return entrada.getValue();
+            }
+        }
+        return null;
+    }
+
+    public String remover(String value) {
+        int index = hash(value);
+        for (Entrada entrada : table[index]) {
+            if (entrada.getValue().equals(value)) {
+                table[index].remove(entrada);
+                return entrada.getValue();
+            }
+        }
+        return null;
     }
 }
