@@ -19,6 +19,30 @@ public class Lista {
         }
         return null;
     }
+    public void remover(int valor) {
+        if (inicio == null) {
+            return;
+        }
+
+        if (inicio.valor.chave == valor) {
+            inicio = inicio.proximo;
+            tamanho--;
+            return;
+        }
+
+        No anterior = inicio;
+        No atual = inicio.proximo;
+        while (atual != null) {
+            if (atual.valor.chave == valor) {
+                anterior.proximo = atual.proximo;
+                tamanho--;
+                return;
+            }
+            anterior = atual;
+            atual = atual.proximo;
+        }
+    }
+
 
     public String toString() {
         String out = "";
