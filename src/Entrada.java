@@ -1,17 +1,15 @@
 public class Entrada {
-    private int key;
-    private String value;
 
-    public Entrada(int key, String value) {
-        this.key = key;
-        this.value = value;
+    int chave;
+
+    public Entrada(int chave){
+        this.chave = chave;
+    }
+    public int getChave() {
+        return chave;
     }
 
-    public int getKey() {
-        return key;
-    }
-
-    public String getValue() {
-        return value;
+    public void setChave(int chave) {
+        this.chave = chave;
     }
 }

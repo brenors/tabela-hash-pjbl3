@@ -1,74 +1,31 @@
-import java.util.LinkedList;
-
 public class HashTable {
+    int operador;
+    Lista[] lista;
 
-    private int size;
-    private LinkedList<Entrada>[] table;
-
-    public HashTable(int size) {
-        this.size = size;
-        this.table = new LinkedList[size];
-        for (int i = 0; i < size; i++) {
-            table[i] = new LinkedList<>();
+    public HashTable(int operador) {
+        this.operador = operador;
+        lista = new Lista[operador];
+        for (int i = 0; i < operador; i++) {
+            lista[i] = new Lista();
         }
     }
 
-    private int hash(int key) {
-        return key % size;
+    public void inserir(Entrada entrada) {
+        int chave = entrada.chave % operador;
+        lista[chave].inserir(chave);
     }
 
-    private int hash(String key) {
-        int hash = 0;
-        for (int i = 0; i < key.length(); i++) {
-            hash = (31 * hash + key.charAt(i)) % size;
+    public Entrada buscar(int chave) {
+        return lista[chave % operador].buscar(chave);
+    }
+
+    public String toString() {
+        String out = "";
+        for (int i = 0; i < operador; i++) {
+            out += "" + i + ": ";
+            out += lista[i % operador] + "\n";
+
         }
-        return hash;
-    }
-
-    public void inserir(int key, String value) {
-        int index = hash(key);
-        table[index].add(new Entrada(key, value));
-    }
-
-    public String buscar(String value) {
-        int index = hash(value);
-        for (Entrada entrada : table[index]) {
-            if (entrada.getValue().equals(value)) {
-                return entrada.getValue();
-            }
-        }
-        return null;
-    }
-
-    public String buscar(int key) {
-        int index = hash(key);
-        for (Entrada entrada : table[index]) {
-            if (entrada.getKey() == key) {
-                return entrada.getValue();
-            }
-        }
-        return null;
-    }
-
-    public String remover(int key) {
-        int index = hash(key);
-        for (Entrada entrada : table[index]) {
-            if (entrada.getKey() == key) {
-                table[index].remove(entrada);
-                return entrada.getValue();
-            }
-        }
-        return null;
-    }
-
-    public String remover(String value) {
-        int index = hash(value);
-        for (Entrada entrada : table[index]) {
-            if (entrada.getValue().equals(value)) {
-                table[index].remove(entrada);
-                return entrada.getValue();
-            }
-        }
-        return null;
+        return out;
     }
 }
