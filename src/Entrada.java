@@ -1,22 +1,18 @@
 public class Entrada {
 
-    private int id;
     int chave;
 
-    public Entrada(int id) {
-        this.id = id;
+    public Entrada(int chave) {
+        this.chave = chave;
     }
 
     public Entrada(Entrada entrada) {
-        this.id = entrada.chave;
+        this.chave = entrada.chave;
     }
 
-    public int getId() {
-        return id;
+    public int getChave() {
+        return chave;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 }
 

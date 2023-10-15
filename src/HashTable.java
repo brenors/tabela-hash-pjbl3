@@ -16,35 +16,36 @@ class HashTable {
         return valor % max_itens;
     }
 
-    public void inserir(int id) {
-        int index = hash(id);
-        lista[index].inserir(id);
+    public void insert(int chave) {
+        int index = hash(chave);
+        lista[index].inserir(chave);
         tam_vetor++;
 
-        // Check load factor and espandir if necessary
+
         if ((double) tam_vetor / max_itens > 0.75) {
             expandir();
         }
     }
 
-    public Entrada buscar(int key) {
-        int index = hash(key);
+    public Entrada search(int chave) {
+        int index = hash(chave);
         Lista lista = this.lista[index];
-        Entrada entrada = lista.buscar(key);
+        Entrada entrada = lista.buscar(chave);
         if (entrada != null) {
-            return new Entrada(entrada);
+            System.out.println(true);
+            return entrada;
         }
+        System.out.println(false);
         return null;
     }
 
-    public Entrada remover(int key) {
-        int index = hash(key);
+    public Entrada remove(int chave) {
+        int index = hash(chave);
         Lista lista = this.lista[index];
-        Entrada entrada = lista.buscar(key);
+        Entrada entrada = lista.buscar(chave);
         if (entrada != null) {
-            lista.remover(key);
-            tam_vetor--;
-            return new Entrada(entrada);
+            lista.remover(chave);
+            return entrada;
         }
         return null;
     }

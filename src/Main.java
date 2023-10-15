@@ -5,15 +5,21 @@ public class Main {
         Entrada entry1 = new Entrada(1);
         Entrada entry2 = new Entrada(2);
         Entrada entry3 = new Entrada(11);
+        Entrada entry4 = new Entrada(23);
 
-        hashTable.inserir(entry1.getId());
-        hashTable.inserir(entry2.getId());
-        hashTable.inserir(entry3.getId());
+        hashTable.insert(entry1.getChave());
+        hashTable.insert(entry2.getChave());
+        hashTable.insert(entry3.getChave());
+        hashTable.insert(entry4.getChave());
 
         System.out.println(hashTable);
 
-        System.out.println("Found entry: " + hashTable.buscar(2) );
+        hashTable.search(6);
 
-        System.out.println("Removed entry: " + hashTable.remover(1));
+        hashTable.remove(11);
+
+        System.out.println(hashTable);
+
+
     }
 }
