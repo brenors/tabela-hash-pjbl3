@@ -1,5 +1,4 @@
 public class Entrada {
-
     int chave;
 
     public Entrada(int chave) {
@@ -13,6 +12,5 @@ public class Entrada {
     public int getChave() {
         return chave;
     }
-
 }
 

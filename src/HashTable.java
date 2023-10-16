@@ -21,7 +21,6 @@ class HashTable {
         lista[index].inserir(chave);
         tam_vetor++;
 
-
         if ((double) tam_vetor / max_itens > 0.75) {
             expandir();
         }
@@ -51,23 +50,22 @@ class HashTable {
     }
 
     private void expandir() {
-        int newCapacity = max_itens * 2;
-        Lista[] newTable = new Lista[newCapacity];
-        for (int i = 0; i < newCapacity; i++) {
-            newTable[i] = new Lista();
+        int nova_capacidade = max_itens * 2;
+        Lista[] nova_tabela = new Lista[nova_capacidade];
+        for (int i = 0; i < nova_capacidade; i++) {
+            nova_tabela[i] = new Lista();
         }
 
         for (Lista lista : lista) {
             No no = lista.inicio;
             while (no != null) {
-                int newIndex = no.valor.chave % newCapacity;
-                newTable[newIndex].inserir(no.valor.chave);
+                int novo_index = no.valor.chave % nova_capacidade;
+                nova_tabela[novo_index].inserir(no.valor.chave);
                 no = no.proximo;
             }
         }
-
-        lista = newTable;
-        max_itens = newCapacity;
+        lista = nova_tabela;
+        max_itens = nova_capacidade;
     }
 
     public String toString() {
@@ -75,7 +73,6 @@ class HashTable {
         for (int i = 0; i < tam_vetor; i++) {
             out += "" + i + ": ";
             out += lista[i % tam_vetor] + "\n";
-
         }
         return out;
     }
