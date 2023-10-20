@@ -2,18 +2,18 @@ public class Lista {
     No inicio;
     int tamanho;
 
-    public void inserir(int chave) {
-        No no = new No(chave);
+    public void inserir(int chave, String nome, String telefone) {
+        No no = new No(chave, nome, telefone);
         no.proximo = inicio;
         inicio = no;
         tamanho++;
     }
 
-    public Entrada buscar(int valor) {
+    public Contato buscar(int valor) {
         No no = inicio;
         while (no != null) {
-            if (no.valor.chave == valor) {
-                return no.valor;
+            if (no.contato.chave == valor) {
+                return no.contato;
             }
             no = no.proximo;
         }
@@ -24,7 +24,7 @@ public class Lista {
             return;
         }
 
-        if (inicio.valor.chave == valor) {
+        if (inicio.contato.chave == valor) {
             inicio = inicio.proximo;
             tamanho--;
             return;
@@ -33,7 +33,7 @@ public class Lista {
         No anterior = inicio;
         No atual = inicio.proximo;
         while (atual != null) {
-            if (atual.valor.chave == valor) {
+            if (atual.contato.chave == valor) {
                 anterior.proximo = atual.proximo;
                 tamanho--;
                 return;
@@ -43,12 +43,11 @@ public class Lista {
         }
     }
 
-
     public String toString() {
         String out = "";
         No no = inicio;
         while (no != null) {
-            out += no.valor.chave + " ";
+            out += no.contato.chave + " ";
             no = no.proximo;
         }
         return out;

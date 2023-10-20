@@ -1,25 +1,9 @@
 public class No {
-    public Entrada valor;
+    public Contato contato;
     public No proximo;
 
-    public No(int valor) {
-        this.valor = new Entrada(valor);
+    public No(int chave, String nome, String telefone) {
+        this.contato = new Contato(chave, nome, telefone);
         this.proximo = null;
-    }
-
-    public int getValor() {
-        return valor.chave;
-    }
-
-    public void setValor(int valor) {
-        this.valor.chave = valor;
-    }
-
-    public No getProximo() {
-        return proximo;
-    }
-
-    public void setProximo(No proximo) {
-        this.proximo = proximo;
     }
 }

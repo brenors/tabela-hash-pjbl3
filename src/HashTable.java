@@ -16,9 +16,9 @@ class HashTable {
         return valor % max_itens;
     }
 
-    public void insert(int chave) {
+    public void insert(int chave, String nome, String telefone) {
         int index = hash(chave);
-        lista[index].inserir(chave);
+        lista[index].inserir(chave, nome, telefone);
         tam_vetor++;
 
         if ((double) tam_vetor / max_itens > 0.75) {
@@ -26,25 +26,40 @@ class HashTable {
         }
     }
 
-    public Entrada search(int chave) {
+    public void tempoBusca(long inicio){
+        long tempo_inicial = inicio;
+        long tempo_final = java.lang.System.nanoTime();
+        long tempo_execucao = tempo_final - tempo_inicial;
+
+        System.out.println("Tempo de execução:  " + tempo_execucao + " nanosegundos");
+    }
+
+    public Contato search(int chave) {
+        long tempo_inicial = java.lang.System.nanoTime();
+
         int index = hash(chave);
         Lista lista = this.lista[index];
-        Entrada entrada = lista.buscar(chave);
-        if (entrada != null) {
-            System.out.println(true);
-            return entrada;
+        Contato contato = lista.buscar(chave);
+        if (contato != null) {
+            System.out.println("Item encontrado: " + contato.toString());
+            this.tempoBusca(tempo_inicial);
+
+            return contato;
         }
         System.out.println(false);
+        this.tempoBusca(tempo_inicial);
+
         return null;
     }
 
-    public Entrada remove(int chave) {
+    public Contato remove(int chave) {
         int index = hash(chave);
         Lista lista = this.lista[index];
-        Entrada entrada = lista.buscar(chave);
-        if (entrada != null) {
+        Contato contato = lista.buscar(chave);
+        if (contato != null) {
             lista.remover(chave);
-            return entrada;
+            System.out.println("Item removido: " + contato.toString());
+            return contato;
         }
         return null;
     }
@@ -59,8 +74,8 @@ class HashTable {
         for (Lista lista : lista) {
             No no = lista.inicio;
             while (no != null) {
-                int novo_index = no.valor.chave % nova_capacidade;
-                nova_tabela[novo_index].inserir(no.valor.chave);
+                int novo_index = no.contato.chave % nova_capacidade;
+                nova_tabela[novo_index].inserir(no.contato.chave, no.contato.nome, no.contato.numero);
                 no = no.proximo;
             }
         }
@@ -70,9 +85,14 @@ class HashTable {
 
     public String toString() {
         String out = "";
-        for (int i = 0; i < tam_vetor; i++) {
+        for (int i = 0; i < max_itens; i++) {
             out += "" + i + ": ";
-            out += lista[i % tam_vetor] + "\n";
+            No no = lista[i].inicio;
+            while (no != null) {
+                out += no.contato.toString() + " ";
+                no = no.proximo;
+            }
+            out += "\n";
         }
         return out;
     }
