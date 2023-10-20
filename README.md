@@ -18,7 +18,7 @@
   - ![image](https://github.com/brenors/tabela-hash-pjbl3/assets/101011280/1a741b26-e79c-4d64-881c-31e0ecac5af4)
 
   - primeiramente iremos instanciar um objeto do tipo HashTable com o número máximo de itens igual a 10 e em seguida vamos instanciar 4 objetos do tipo Contato para serem inseridos na tabela hash criada:
-    ![image](https://github.com/brenors/tabela-hash-pjbl3/assets/101011280/8b7c914a-d9d2-4ad6-84fe-a6c9f1363b83)
+    ![image](https://github.com/brenors/tabela-hash-pjbl3/assets/101011280/bcc3c00c-e29c-4beb-8936-555158da318e)
       - resultado:
         ![image](https://github.com/brenors/tabela-hash-pjbl3/assets/101011280/0fbc71d7-72ff-4279-a10a-89d1ca10c018)
 
