@@ -7,7 +7,7 @@
 
 - A colisão é tratada usando listas encadeadas. Cada posição da tabela hash contém uma lista encadeada de elementos que colidem na mesma posição.
   - ![image](https://github.com/brenors/tabela-hash-pjbl3/assets/101011280/992f3bb1-3363-4cca-b04b-469c8e7cfa5a)
-  - ![image](https://github.com/brenors/tabela-hash-pjbl3/assets/101011280/63c36460-6e89-435d-8314-fddf4d74b1bf)
+  - ![image](https://github.com/brenors/tabela-hash-pjbl3/assets/101011280/ae363f9b-7821-4b4d-9a73-f683cd226d3c)
   
 - A inserção, busca e remoção são implementadas percorrendo a lista encadeada correspondente à posição calculada pela função de hash.
   - ![image](https://github.com/brenors/tabela-hash-pjbl3/assets/101011280/7b221030-25de-4666-9d09-767adbfda561)
